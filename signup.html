@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial-scale="1.0">
+        <title>sign up </title>
+        <link rel="icon" type="image/png" sizes="32x32" href="images\favicon-32x32.png">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    </head>
+    <body class="bg-[url('images/bg-pattern-desktop.svg')] ">
+       
+        <div class="p-4 m-4 sm:w-64">
+            <img src="images\logo.svg" alt="logo" class="h-6 sm:h-10 w-auto  " >
+        </div>
+        <div class=" ">
+            <img src="images\hero-mobile.jpg" alt="" class="w-full md:hidden ">
+           <img class="max-md:hidden h-screen sm:w-[38%] sm:float-right" src="images\hero-desktop.jpg" alt="">
+        </div>
+
+        <div class=" flex justify-center items-center  ">
+            <form id="form" class=" p-8 pb-6 m-4 sm:mt-8 bg-[hsl(0,36%,70%)] text-white rounded-xl ">
+                <h1 class="text-2xl sm:text-4xl text-center mb-4">Sign up to see more</h1>
+                  <div>
+                    <label for="name" class="pt-4 text-md sm:text-2xl">Name</label>
+                    <input type="text" name="name" id="name" class="block w-[150px] sm:w-[200px] pl-2 rounded-md border-0 mt-2  text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6" placeholder="Name" minlength="3" maxlength="20" required>
+                    <div class="error"></div>
+                  </div>
+                  <div>
+                    <label for="email" class="pt-4 text-md sm:text-2xl">Email</label>
+                    <input type="email" name="email" id="email" class="block w-[150px] sm:w-[200px] pl-2 rounded-md border-0 mt-2  text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6" placeholder="Email" pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/" required>
+                    <div class="error"></div>
+                  </div>
+                  <div>
+                    <label for="password" class="pt-4 text-md sm:text-2xl">Password</label>
+                    <input type="password" name="password" id="password" class="block w-[150px] sm:w-[200px] pl-2 rounded-md border-0 mt-2  text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6" placeholder="Password" minlength="8" maxlength="20" required>
+                    <div class="error"></div>
+                  <div>
+                    <p class="mt-4 text-sm sm:text-md">Already a member?<span><a href="login.html" class="hover:text-black ml-2 ">Log in</a></span>
+                    </p>
+                  </div>
+                  </div>
+                  <button type="button" class="bg-red-200 mt-4 ml-2 py-2 sm:ml-4 w-32 text-[hsl(0,6%,24%)] rounded-xl"  onclick="saveData()" >Sign Up</button>
+                 
+            </form>
+        </div>
+
+    </body>
+  <script>
+     
+        function saveData(){
+            let name, email, password;
+            name=document.getElementById("name").value;
+            email=document.getElementById("email").value;
+            password=document.getElementById("password").value;
+            
+           
+            let user_record=JSON.parse(localStorage.getItem("users"))||[];  //A common use of JSON is to read data from a web server, and display the data in a web page.
+            if(user_record.some((v)=>{
+                return v.email==email //duplicate email
+            })){
+                alert("Already a member! Log in to see more")
+                window.location.assign("login.html")
+            }
+                
+            else {
+                 user_record.push({
+                 "email":email,
+                 "name":name,
+                 "password":password
+                    
+                 })
+             
+                localStorage.setItem("users",JSON.stringify(user_record));//parse is used to convert string into JavaScript object
+                   
+                 alert("Sign up successful");
+               window.location.assign("login.html");
+             }  
+                  
+
+            }
+       
+       
+        
+    </script>
+</html>

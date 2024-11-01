@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial-scale="1.0">
+        <title>log in </title>
+        <link rel="icon" type="image/png" sizes="32x32" href="images\favicon-32x32.png">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    </head>
+    <body class="bg-[url('images/bg-pattern-desktop.svg')] border-box">
+       
+        <div class="p-4 m-4 sm:w-64">
+            <img src="images\logo.svg" alt="logo" class="h-6 sm:h-8 w-auto  sm:ml-32">
+        </div>
+       <div class=" mt-0 pt-0">
+            <img src="images\hero-mobile.jpg" alt="Small Image" class="w-full md:hidden">
+            <img src="images\hero-desktop.jpg" alt="Large Image" class=" max-md:hidden h-screen sm:w-[38%] sm:float-right ">
+        </div> 
+        
+    
+        <div class=" flex justify-center items-center ">
+             <form action="" id="form" class=" p-12 m-4 sm:mt-8 bg-[hsl(0,36%,70%)] text-white rounded-xl ">
+                <h1 class="text-2xl sm:text-4xl text-center mb-4 ">Log In to see more</h1>
+                 
+                  <div>
+                    <label for="email" class="pt-4 text-md sm:text-2xl">Email</label>
+                    <input type="email" name="email" id="email" class="block w-[150px] sm:w-[200px] pl-2 rounded-md border-0 mt-2  text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6" placeholder="Email" pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/" required>
+                    <div class="error"></div>
+                  </div>
+                  <div>
+                    <label for="password" class="pt-4 text-md sm:text-2xl">Password</label>
+                    <input type="password" name="password" id="password" class="block w-[150px] sm:w-[200px] pl-2 rounded-md border-0 mt-2  text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6" placeholder="Password" minlength="8" maxlength="20"  required>
+                    <div class="error"></div>
+                  <div>
+                    <p class="mt-4 text-sm sm:text-md">Not a member?<span><a href="signup.html" class="hover:text-black ml-2 ">Sign Up</a></span>
+                    </p>
+                  </div>
+                  </div>
+                  <button class="bg-red-200 mt-4 ml-2 sm:ml-4 py-2 w-32 text-[hsl(0,6%,24%)] rounded-xl" type="submit" onclick="saveData()" >Log In</button>
+                 
+            </form>
+        
+        </div>
+     </div>    
+
+      
+    </body>
+
+    <script>
+      
+        /*
+       let email=document.getElementById("email");
+       let password=document.getElementById("pass");
+       let form=document.getElementById("form");
+       let email_error=document.getElementById("email_error");
+       let pass_error=document.getElementById("pass_error");
+       
+       form.addEventListener('submit',(e)=>{
+        let email_valid=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if(email.value==='' || email.value==null ){
+            e.preventDefault();
+            email_error.innerHTML="email is required"
+        }
+        if(!email.value.match(email_valid)){
+            e.preventDefault();
+            email_valid.innerHTML="invalid email"
+        }
+        if(password.value==='' || password.value==null ){
+            e.preventDefault();
+            pass_error.innerHTML="Password is required"
+        }
+    }
+)
+    */
+
+
+        function saveData(){
+            let email, password;
+            email=document.getElementById("email").value;
+            password=document.getElementById("password").value;
+            
+            
+           
+            let user_record=JSON.parse(localStorage.getItem("users"))||[];
+            if(user_record.some((v)=>{
+                return v.email==email && v.password==password
+            })){
+                alert("Login Successful")
+                window.location.assign(profile.html)
+             
+                 
+                let current_user=user_record.filter((v)=>{
+                    return v.email==email && v.pass==password
+                })[0]
+                localStorage.setItem("email",current_user.email);
+                localStorage.setItem("password",current_user.password);
+                
+            }
+          
+
+            else{
+                alert("login unsuccessful")
+                
+            }
+            
+        }
+
+            
+        
+       
+        //A common use of JSON is to read data from a web server, and display the data in a web page.
+        //parse is used to convert string into JavaScript object*/
+
+</script>
+    
+</html>
