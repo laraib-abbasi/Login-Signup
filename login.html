@@ -37,7 +37,7 @@
                     </p>
                   </div>
                   </div>
-                  <button class="bg-red-200 mt-4 ml-2 sm:ml-4 py-2 w-32 text-[hsl(0,6%,24%)] rounded-xl" type="submit" onclick="saveData()" >Log In</button>
+                  <button class="bg-red-200 mt-4 ml-2 sm:ml-4 py-2 w-32 text-[hsl(0,6%,24%)] rounded-xl" type="button" onclick="saveData()" >Log In</button>
                  
             </form>
         
@@ -49,7 +49,7 @@
 
     <script>
       
-        /*
+    
        let email=document.getElementById("email");
        let password=document.getElementById("pass");
        let form=document.getElementById("form");
@@ -72,7 +72,7 @@
         }
     }
 )
-    */
+    
 
 
         function saveData(){
@@ -87,7 +87,7 @@
                 return v.email==email && v.password==password
             })){
                 alert("Login Successful")
-                window.location.assign(profile.html)
+                window.location.assign('profile.html')
              
                  
                 let current_user=user_record.filter((v)=>{
