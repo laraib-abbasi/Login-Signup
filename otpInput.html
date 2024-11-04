@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial-scale="1.0">
+        <link rel="icon" type="image/png" sizes="32x32" href="images\favicon-32x32.png">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <title>Otp submit</title>
+    </head>
+    <body class="bg-[url('images/bg-pattern-desktop.svg')]">
+        <div class="bg-red-200 w-[400px] p-12 m-6 rounded-lg">
+            <h1 class="text-4xl text-[hsl(0,50%,50%)] mb-4 mt-0 pt-0">Enter your OTP</h1>
+            <input class="h-10 p-2 rounded-sm" type="text" id="otp" placeholder="Enter OTP" />
+            <button class="text-red-200  bg-[hsl(0,93%,68%)] mt-2 p-2 px-6 rounded-md" onclick="handleOtpSubmission()">Submit</button>
+        </div>
+        
+    </body>
+    <script>
+        function handleOtpSubmission() {
+    const otpInput = document.getElementById('otp').value;
+    const storedOtp = localStorage.getItem('otp');
+    const storedEmail = localStorage.getItem('otpEmail');
+
+    if (otpInput === storedOtp) {
+        window.location.href = "resetPassword.html"; // Change to your reset password page URL
+    } else {
+        alert("Invalid OTP. Please try again.");
+    }
+}
+    </script>
+</html>

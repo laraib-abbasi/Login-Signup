@@ -33,6 +33,10 @@
                     <input type="password" name="password" id="password" class="block w-[150px] sm:w-[200px] pl-2 rounded-md border-0 mt-2  text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6" placeholder="Password" minlength="8" maxlength="20"  required>
                     <div class="error"></div>
                   <div>
+                    <a href="emailInput.html">Forgot password?</a>
+                  </div>
+
+                  <div>
                     <p class="mt-4 text-sm sm:text-md">Not a member?<span><a href="signup.html" class="hover:text-black ml-2 ">Sign Up</a></span>
                     </p>
                   </div>
@@ -48,7 +52,7 @@
     </body>
 
     <script>
-      
+      /*
     
        let email=document.getElementById("email");
        let password=document.getElementById("pass");
@@ -71,7 +75,7 @@
             pass_error.innerHTML="Password is required"
         }
     }
-)
+)*/
     
 
 
@@ -86,8 +90,8 @@
             if(user_record.some((v)=>{
                 return v.email==email && v.password==password
             })){
-                alert("Login Successful")
-                window.location.assign('profile.html')
+                alert("Login Successful");
+                window.location.assign('profile.html');
              
                  
                 let current_user=user_record.filter((v)=>{

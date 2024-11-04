@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial-scale="1.0">
+    
+        <link rel="icon" type="image/png" sizes="32x32" href="images\favicon-32x32.png">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <title>submit email</title>
+    </head>
+    <body class=" bg-[url('images/bg-pattern-desktop.svg')] ">
+        <div class="bg-red-200 w-[400px] p-12 m-6 rounded-lg"> 
+            <h1 class="text-4xl text-[hsl(0,50%,50%)] mb-4 mt-0 pt-0">Enter your email</h1>
+           <input class="h-10 p-2 rounded-sm" type="email" id="email" placeholder="Enter your email" />
+        <button class="text-red-200  bg-[hsl(0,93%,68%)] mt-2 p-2 px-6 rounded-md" type="button" onclick="handleEmailSubmission()">Submit</button>
+        
+        <p class="text-[hsl(0,50%,50%)] mt-2 ">Not working?<span class="pl-2"><a href="signup.html">Sign up</a></span></p>
+    </div>
+
+        <script>
+          // Function to handle email submission
+function handleEmailSubmission() {
+    const emailInput = document.getElementById('email').value;
+    const userData = JSON.parse(localStorage.getItem('users')) || [];
+
+    // Check if the email exists in local storage
+    const user = userData.find(user => user.email === emailInput);
+    if (user) {
+        const otp = Math.floor(100000 + Math.random() * 900000); // Generate a 6-digit OTP
+        localStorage.setItem('otp', otp); // Store OTP in local storage
+        localStorage.setItem('otpEmail', emailInput); // Store email for OTP verification
+        window.location.href = "otpShow.html"; // Change to your OTP input page URL
+    } else {
+        alert("Email not found. Try again.");
+       
+    }
+}
+
+        </script>
+    </body>
+</html>
